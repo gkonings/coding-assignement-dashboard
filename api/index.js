@@ -1,5 +1,7 @@
 const { send } = require('micro');
+const cors = require('micro-cors')();
 const { router, get } = require('microrouter');
+
 
 // Data layer
 const {
@@ -10,8 +12,7 @@ const {
 } = require('./datafetcher');
 
 // Routes
-const Root = (req, res) =>
-  send(res, 404, 'All routes are under the /api namespace.');
+const Root = (req, res) => send(res, 404, 'All routes are under the /api namespace.');
 
 const PaymentsOverview = (req, res) => send(res, 200, getPayments());
 
@@ -46,14 +47,13 @@ const PaymentRefunds = (req, res) => {
   return send(res, 200, refunds);
 };
 
-const NotFound = (req, res) =>
-  send(res, 404, 'Whoops. Not sure what you are looking for.');
+const NotFound = (req, res) => send(res, 404, 'Whoops. Not sure what you are looking for.');
 
 module.exports = router(
-  get('/', Root),
-  get('/api/payments(/)', PaymentsOverview),
-  get('/api/payments/:id/refunds(/)', PaymentRefunds),
-  get('/api/payments/:id(/)', PaymentDetails),
-  get('/api/customers/:id(/)', CustomerDetails),
-  get('/*', NotFound)
+  get('/', cors(Root)),
+  get('/api/payments(/)', cors(PaymentsOverview)),
+  get('/api/payments/:id/refunds(/)', cors(PaymentRefunds)),
+  get('/api/payments/:id(/)', cors(PaymentDetails)),
+  get('/api/customers/:id(/)', cors(CustomerDetails)),
+  get('/*', cors(NotFound)),
 );
