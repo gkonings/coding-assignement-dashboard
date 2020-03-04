@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import pt from 'prop-types';
+
 import PaymentMethodIcon from 'components/PaymentMethodIcon';
 import Box from 'components/Box';
 import CustomerModal from 'components/CustomerModal';
 import { getPaymentMethodName } from 'utils';
-import styles from './styles.module.scss';
+import styles from './Details.module.scss';
 
 const Details = ({ payment, customer }) => {
   const [isOpen, setOpen] = useState(false);
@@ -17,13 +19,13 @@ const Details = ({ payment, customer }) => {
         <dd>{payment.status}</dd>
         <dt>Method</dt>
         <dd>
-          <PaymentMethodIcon id={payment.method} />{' '}
+          <PaymentMethodIcon id={payment.method} />
           {getPaymentMethodName(payment.method)}
         </dd>
         <dt>Customer</dt>
         <dd>
           {customer.name}
-          <button className={styles.customerLink} onClick={() => setOpen(true)}>
+          <button type="button" className={styles.customerLink} onClick={() => setOpen(true)}>
             View details
           </button>
         </dd>
@@ -36,6 +38,17 @@ const Details = ({ payment, customer }) => {
       />
     </Box>
   );
+};
+
+Details.propTypes = {
+  payment: pt.shape({
+    createdAt: pt.string,
+    status: pt.string,
+    method: pt.string,
+  }).isRequired,
+  customer: pt.shape({
+    name: pt.string,
+  }).isRequired,
 };
 
 export default Details;

@@ -1,5 +1,6 @@
 /* eslint-disable default-case */
-export const getPaymentMethodName = id => {
+// eslint-disable-next-line import/prefer-default-export
+export const getPaymentMethodName = (id) => {
   switch (id) {
     case 'ideal':
       return 'iDEAL';
@@ -7,5 +8,7 @@ export const getPaymentMethodName = id => {
       return 'Credit card';
     case 'paypal':
       return 'Paypal';
+    default:
+      return null;
   }
 };

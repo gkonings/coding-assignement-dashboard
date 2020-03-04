@@ -1,6 +1,8 @@
 import React from 'react';
+import pt from 'prop-types';
+
 import Modal from 'components/Modal';
-import styles from './styles.module.scss';
+import styles from './CustomerModal.module.scss';
 
 const CustomerModal = ({ customer, ...rest }) => (
   <Modal {...rest}>
@@ -16,5 +18,16 @@ const CustomerModal = ({ customer, ...rest }) => (
     </div>
   </Modal>
 );
+
+CustomerModal.propTypes = {
+  customer: pt.shape({
+    picture: pt.shape({
+      large: pt.string.isRequired,
+    }),
+    name: pt.string.isRequired,
+    company: pt.string.isRequired,
+    email: pt.string.isRequired,
+  }).isRequired,
+};
 
 export default CustomerModal;

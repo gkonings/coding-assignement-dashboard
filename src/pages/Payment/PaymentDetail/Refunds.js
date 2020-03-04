@@ -1,4 +1,6 @@
 import React from 'react';
+import pt from 'prop-types';
+
 import Table from 'components/Table';
 
 const Refunds = ({ refunds }) => {
@@ -12,6 +14,14 @@ const Refunds = ({ refunds }) => {
       <Table />
     </>
   );
+};
+
+Refunds.propTypes = {
+  refunds: pt.arrayOf(pt.shape({})),
+};
+
+Refunds.defaultProps = {
+  refunds: [],
 };
 
 export default Refunds;
