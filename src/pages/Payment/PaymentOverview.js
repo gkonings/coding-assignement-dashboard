@@ -4,7 +4,7 @@ import Context from 'context/DashboardContextProvider';
 import NotFound from 'pages/NotFound';
 import List from 'components/List';
 
-const Overview = () => {
+const PaymentOverview = () => {
   const { payments } = useContext(Context);
   const { getPayments, data, status } = payments;
 
@@ -25,4 +25,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default PaymentOverview;
