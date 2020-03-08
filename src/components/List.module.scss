@@ -1,0 +1,20 @@
+@import '~variables.scss';
+
+.spinner {
+  width: 100%;
+  margin: 30px;
+}
+
+.list {
+  list-style: none;
+
+  padding: 30px 15px;
+
+  @media (min-width: $small-up) {
+    padding: 30px;
+  }
+
+  @media (min-width: $medium-up) {
+    padding: 30px 15px;
+  }
+}

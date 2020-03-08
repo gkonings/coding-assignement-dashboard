@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 
-import Table from 'components/Table';
-import { getPayments } from 'services/api';
+import Context from 'context/DashboardContextProvider';
+import NotFound from 'pages/NotFound';
+import List from 'components/List';
 
 const Overview = () => {
-  const [payments, setPayments] = useState([]);
-  useEffect(() => {
-    const fetchPayments = async () => {
-      setPayments(await getPayments());
-    };
+  const { payments } = useContext(Context);
+  const { getPayments, data, status } = payments;
 
-    fetchPayments();
+  useEffect(() => {
+    getPayments();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (status === 'error') {
+    return <NotFound />;
+  }
 
   return (
     <>
       <h1>Payments</h1>
-      <Table payments={payments} />
+      <List payments={data} status={status} navigateToUser />
     </>
   );
 };

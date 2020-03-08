@@ -1,6 +1,27 @@
 :root {
+  --color-border: #ccc;
+
   --color-primary: #07f;
   --color-primary-hover: #005cc6;
+
+  --color-succes: #4CD964;
+  --color-succes-border: #2bcd47;
+  --color-succes-invert: #fff;
+
+  --color-canceled: #eee;
+  --color-canceled-border: #cacaca;
+  --color-canceled-invert: #999;
+
+  --color-failed: #FF3B30;
+  --color-failed-border: #fe0f02;
+  --color-failed-invert: #fff;
+
+  --color-open: #FFCC00;
+  --color-open-border: #d8ad00;
+  --color-open-invert: #fff;
+
+  --color-text: #444;
+  --color-text-hover: #666;
 }
 
 // Breakpoints

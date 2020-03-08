@@ -15,6 +15,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text);
 }
 
 ul {
@@ -86,6 +87,10 @@ hr {
   }
 
   @media (min-width: $medium-up) {
+    padding: 60px 30px;
+  }
+
+  @media (min-width: $large-up) {
     padding: 60px 80px;
   }
 }

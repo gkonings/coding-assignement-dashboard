@@ -1,0 +1,37 @@
+@import '~variables.scss';
+
+.label {
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.pending,
+.queued,
+.open {
+  color: var(--color-open-invert);
+  background-color: var(--color-open);
+  border: var(--color-open-border) 1px solid;
+}
+
+.refunded,
+.paid {
+  color: var(--color-succes-invert);
+  background-color: var(--color-succes);
+  border: var(--color-succes-border) 1px solid;
+}
+
+.failed {
+  color: var(--color-failed-invert);
+  background-color: var(--color-failed);
+  border: var(--color-failed-border) 1px solid;
+}
+
+.processing,
+.canceled,
+.expired {
+  color: var(--color-canceled-invert);
+  background-color: var(--color-canceled);
+  border: var(--color-canceled-border) 1px solid;
+}

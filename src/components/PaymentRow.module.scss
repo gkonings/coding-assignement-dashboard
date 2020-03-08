@@ -1,0 +1,81 @@
+@import '~variables.scss';
+
+.listItemHeader,
+.listItem {
+  display: grid;
+
+  grid-template-columns: 38px 5fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "icon details amount""icon date status";
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+  align-items: center;
+  border-bottom: var(--color-border) 1px solid;
+
+  color: var(--color-text);
+  text-decoration: none;
+
+  @media (min-width: $small-up) {
+    grid-column-gap: 10px;
+  }
+
+  @media (min-width: $medium-up) {
+    grid-template-columns: 40px minmax(50px, 70px) minmax(70px, 100px) 1fr minmax(180px, 200px);
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+    grid-template-areas: "icon amount status details date";
+  }
+
+  @media (min-width: $large-up) {
+    grid-gap: 30px;
+  }
+}
+
+.listItemHeader {
+  @media (max-width: $medium-down) {
+    display: none;
+  }
+}
+
+.header {
+  display: block;
+  font-weight: bold;
+
+  @media (max-width: $medium-down) {
+    display: none;
+  }
+}
+
+.icon {
+  grid-area: icon;
+}
+
+.amount {
+  grid-area: amount;
+  text-align: right;
+
+  @media (max-width: $medium-down) {
+    font-weight: bold;
+  }
+}
+
+.status {
+  grid-area: status;
+
+  @media (max-width: $medium-down) {
+    text-align: right;
+  }
+}
+
+.details {
+  grid-area: details;
+
+  @media (max-width: $medium-down) {
+    font-weight: bold;
+  }
+}
+
+.date {
+  grid-area: date;
+}
