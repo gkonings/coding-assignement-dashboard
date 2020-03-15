@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { fetchRefunds } from 'services/api';
+import api from 'services/api';
 
-export const defaultRefundsContext = [{
-  getRefunds: async () => [],
-  data: [],
-  status: null,
-}];
+export const defaultRefundsContext = [
+  {
+    getRefunds: async () => [],
+    data: [],
+    status: null,
+  },
+];
 
 const useRefundsContext = () => {
   const [timestamp, setTimestamp] = useState(new Date());
@@ -13,10 +15,10 @@ const useRefundsContext = () => {
   const [data, setData] = useState();
   const [status, setStatus] = useState();
 
-  const getNewRefunds = async (id) => {
+  const getNewRefunds = async id => {
     setStatus('loading');
     try {
-      const result = await fetchRefunds(id);
+      const result = await api.fetchRefunds(id);
       setTimestamp(new Date());
       setCustomerId(id);
       setData(result);
@@ -26,7 +28,7 @@ const useRefundsContext = () => {
     }
   };
 
-  const getRefunds = async (id) => {
+  const getRefunds = async id => {
     // nothing loaded yet?
     if (!data) {
       getNewRefunds(id);
@@ -37,7 +39,8 @@ const useRefundsContext = () => {
     const currentTime = new Date();
     const differenceMs = Math.abs(currentTime - timestamp);
 
-    if ((differenceMs / 1000) / 60 > 2) { // Ms to minutes
+    if (differenceMs / 1000 / 60 > 2) {
+      // Ms to minutes
       getNewRefunds(id);
     }
 

@@ -1,4 +1,4 @@
-const fetchResource = async (url) => {
+const fetchResource = async url => {
   const response = await fetch(url, {
     method: 'GET',
     headers: {
@@ -10,6 +10,15 @@ const fetchResource = async (url) => {
   return json;
 };
 
-export const fetchPayments = async (id) => fetchResource(`http://localhost:4000/api/payments${id ? `/${id}` : ''}`);
+const fetchPayments = async id =>
+  fetchResource(`http://localhost:4000/api/payments${id ? `/${id}` : ''}`);
 
-export const fetchRefunds = (id) => fetchResource(`http://localhost:4000/api/payments/${id}/refunds`);
+const fetchRefunds = id =>
+  fetchResource(`http://localhost:4000/api/payments/${id}/refunds`);
+
+const api = {
+  fetchPayments,
+  fetchRefunds,
+};
+
+export default api;

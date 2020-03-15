@@ -5,6 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.5.0",
+    "@testing-library/react-hooks": "^3.2.1",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "micro": "^9.3.4",
@@ -15,7 +16,8 @@
     "react-dom": "^16.13.0",
     "react-modal": "^3.11.2",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "react-test-renderer": "^16.13.0"
   },
   "scripts": {
     "start": "yarn run start-api & react-scripts start",
@@ -31,9 +33,10 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "18.0.1",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1"

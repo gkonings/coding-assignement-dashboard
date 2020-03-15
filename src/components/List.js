@@ -15,21 +15,43 @@ const List = ({ payments, status, navigateToUser }) => {
 
   return (
     <Box noPadding>
-      {(!status || status === 'loading')
-      && <Icon id="spinner" className={styles.spinner} />}
-      {status === 'success' && (
-      <ul className={styles.list}>
-        <PaymentRowHeader />
-        {payments.map((payment) => <PaymentRow payment={payment} key={payment.id} navigateToUser={navigateToUser} />)}
-      </ul>
+      {(!status || status === 'loading') && (
+        <Icon id="spinner" className={styles.spinner} />
       )}
-
+      {status === 'success' && (
+        <ul className={styles.list}>
+          <PaymentRowHeader />
+          {payments.map(payment => (
+            <PaymentRow
+              payment={payment}
+              key={payment.id}
+              navigateToUser={navigateToUser}
+            />
+          ))}
+        </ul>
+      )}
     </Box>
   );
 };
 
 List.propTypes = {
-  payments: pt.arrayOf(pt.shape({})),
+  payments: pt.arrayOf(
+    pt.shape({
+      amount: pt.shape({
+        currency: pt.string,
+        value: pt.number,
+      }),
+      createdAt: pt.string,
+      customer: pt.shape({
+        id: pt.string,
+        name: pt.string,
+      }),
+      description: pt.string,
+      id: pt.string,
+      method: pt.string,
+      status: pt.string,
+    })
+  ),
   status: pt.oneOf(['loading', 'success']),
   navigateToUser: pt.bool,
 };

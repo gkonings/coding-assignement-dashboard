@@ -18,3 +18,11 @@ export const displayDate = (dateString) => {
   const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
   return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} on ${(`0${date.getHours()}`).slice(-2)}:${(`0${date.getMinutes()}`).slice(-2)}`;
 };
+
+const utils = {
+  getPaymentMethodName,
+  displayCurrency,
+  displayDate,
+};
+
+export default utils;

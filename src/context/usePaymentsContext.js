@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { fetchPayments } from 'services/api';
+import api from 'services/api';
 
-export const defaultPaymentsContext = [{
-  getPayments: async () => [],
-  data: [],
-  status: null,
-}];
+export const defaultPaymentsContext = [
+  {
+    getPayments: async () => [],
+    data: [],
+    status: null,
+  },
+];
 
 const usePaymentsContext = () => {
   const [timestamp, setTimestamp] = useState(new Date());
@@ -15,7 +17,8 @@ const usePaymentsContext = () => {
   const getNewPayments = async () => {
     setStatus('loading');
     try {
-      const result = await fetchPayments();
+      const result = await api.fetchPayments();
+
       setTimestamp(new Date());
       setData(result);
       setStatus('success');
@@ -33,9 +36,10 @@ const usePaymentsContext = () => {
 
     // old results still fresh?
     const currentTime = new Date();
-    const differenceMs = Math.abs(currentTime - timestamp);
 
-    if ((differenceMs / 1000) / 60 > 2) { // Ms to minutes
+    const differenceMs = Math.abs(currentTime - timestamp);
+    if (differenceMs > 1000 * 60 * 2) {
+      // Ms to minutes
       getNewPayments();
     }
   };
